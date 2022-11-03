@@ -20,7 +20,7 @@ public class jsonReader {
 	
 	public Root parse() throws FileNotFoundException, IOException, ParseException {
 		
-		Object obj = new JSONParser().parse(new FileReader("./files/json/regular_users.json"));
+		Object obj = new JSONParser().parse(new FileReader("./files/json/admin_users.json"));
 		JSONArray arr = (JSONArray) obj;
 		
 		Root root = new Root();
@@ -71,7 +71,11 @@ public class jsonReader {
 			
 			System.out.println(person.getId());
 			System.out.println(person.getName());
-			System.out.println(person.getAddress());
+			if(person.getAddress()!=null) {
+				System.out.println(person.getAddress().get(0).getCity());
+				System.out.println(person.getAddress().get(0).getStreet());
+				System.out.println(person.getAddress().get(0).getBuilding());
+			}
 		}
 	}
 }
